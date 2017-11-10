@@ -1,0 +1,35 @@
+Write a function that takes a string as input and reverse only the vowels of a string.
+
+Example 1:
+Given s = "hello", return "holle".
+
+Python3
+
+class Solution:
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        
+        l = {'a', 'e', 'o', 'i', 'u'}
+        hashmap = dict()
+        s = list(s)
+        prev = len(s)-1
+        
+        for c in range(0, len(s)):
+            if s[c] in l:
+                if c in hashmap:
+                    s = "".join(s)
+                    return s
+                for p in range(prev, c, -1):
+                    if s[p] in l:
+                        tmp = s[c]
+                        s[c] = s[p]
+                        s[p] = tmp
+                        hashmap[p] = p
+                        prev = p-1
+                        break
+                    
+        s = "".join(s)
+        return s
