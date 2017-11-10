@@ -2,7 +2,7 @@ Given an array of integers, return indices of the two numbers such that they add
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-Python3
+Python3 - O(n2) time complexity/can be reduced to O(n) with the use of a hash tables
 
 class Solution:
     def twoSum(self, nums, target):
