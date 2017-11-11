@@ -1,0 +1,42 @@
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Python3
+
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        
+        if x > 2**32:
+            return 0
+        
+        st = str(x)
+        st = list(st)
+        
+        negative = False
+        
+        if "-" in st:
+            del st[0]
+            negative = True
+        
+        for c in range(0, int(len(st)/2)):
+            rev = -c - 1
+            tmp = st[c]
+            st[c] = st[rev]
+            st[rev] = tmp            
+        
+        if st[0] == 0:
+            del st[0]
+        
+        if negative == True:
+            st.insert(0, "-")
+        
+        st = "".join(st)
+        st = int(st)
+        
+        if abs(st) > 2147483647:
+            return 0
+        
+        return st
